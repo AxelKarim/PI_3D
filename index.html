@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Beneficiarios</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.5/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+    <div class="container">
+            <!-- Topbar(Barra superior) -->
+        <div class="topbar">
+            <div class="logo">
+                <h2>Brand.</h2>
+            </div>
+            <div class="search">
+                <input type="text" id="search" placeholder="Search here">
+                <label for="search"><i class="fas fa-search"></i></label>
+            </div>
+            <i class="fas fa-bell"></i>
+            <div class="user">
+                <img src="assets/images/5.jpg" alt="">
+            </div>
+        </div>
+        <!-- Fin de Topbar (Barra superior) -->
+    
+        <div class="sidebar">
+            <!-- Sidebar (Barra lateral) -->
+            <ul>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-th-large"></i>
+                        <div>Dashboard</div>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fa-regular fa-user"></i>
+                        <div>Perfil</div>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fas fa-chart-bar"></i>
+                        <div>Informes</div>
+                    </a>
+                </li>
+
+                
+
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        <div>Cerras Sesión</div>
+                    </a>
+                </li>
+            </ul>
+        </div> 
+        <!-- Fin de Sidebar (Barra lateral) -->
+        
+        <div class="main">
+            <!-- Main content (contenido) -->
+            <div class="cards">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="number">1217</div>
+                        <div class="card-name">Students</div>
+                    </div>
+                    <div class="icon-box">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <div class="number">42</div>
+                        <div class="card-name">Teacher</div>
+                    </div>
+                    <div class="icon-box">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <div class="number">68</div>
+                        <div class="card-name">Employees</div>
+                    </div>
+                    <div class="icon-box">
+                        <i class="fas fa-users"></i>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <div class="number">$4500</div>
+                        <div class="card-name">Earnings</div>
+                    </div>
+                    <div class="icon-box">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="charts">
+                <div class="chart">
+                    <h2>Ingresos</h2>
+                    <canvas id="lineChart" width="400px"></canvas>
+                </div>
+
+                <div class="ultim-donacion">
+                    <h2 class="ultd-title">útltima donación</h2>
+                </div>
+                <!-- <div class="chart" id="doughnut-chart" heigth="400px">
+                    <h2>Employees</h2>
+                    <canvas id="doughnut"></canvas>
+                </div> -->
+            </div>
+        </div>
+
+        <!-- Fin del main content -->
+    </div>
+    
+    
+
+    <!-- SCRIPTS -->
+    
+
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <script src="assets/js/script.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.5/dist/chart.umd.min.js"></script> -->
+    <!-- <link rel="stylesheet" href="assets/js/script.js"> -->
+    <script src="assets/js/script2.js"></script>
+    <!-- SCRIPTS -->
+
+</body>
+</html>
