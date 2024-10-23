@@ -13,6 +13,7 @@
             height: 100vh;
             margin: 0;
         }
+
         /* Video de fondo */
         video#backgroundVideo {
             position: absolute;
@@ -20,12 +21,12 @@
             left: 0;
             min-width: 100%;
             min-height: 100%;
-            z-index: -1; /* Envía el video al fondo */
-            object-fit: cover; /* Asegura que el video cubra toda la pantalla */
+            z-index: -1;
+            object-fit: cover;
         }
 
         .container {
-            background-color: rgba(255, 255, 255, 0.2); /* Fondo blanco con 80% de transparencia */
+            background-color: rgba(255, 255, 255, 0.2);
             padding: 20px;
             border-radius: 12px;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
@@ -48,12 +49,11 @@
         }
 
         input[type="text"], input[type="email"], input[type="password"], input[type="date"] {
-            background-color: rgba(255, 255, 255, 0.2); /* Fondo blanco con 20% de opacidad */
-            border: 1px solid rgba(255, 255, 255, 0.5); /* Borde blanco con más opacidad */
+            background-color: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.5);
             width: 100%;
             padding: 12px;
             margin: 10px 0;
-            border: 1px solid #ddd;
             border-radius: 5px;
             box-sizing: border-box;
             font-size: 14px;
@@ -73,7 +73,7 @@
             top: 50%;
             transform: translateY(-50%);
             cursor: pointer;
-            display: none; /* Inicialmente oculto */
+            display: none;
         }
 
         button {
@@ -119,14 +119,14 @@
 
         /* Estilos generales para el modal */
         .modal {
-            display: none; /* Oculto por defecto */
+            display: none;
             position: fixed;
             z-index: 1;
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.5); /* Fondo semitransparente */
+            background-color: rgba(0,0,0,0.5);
         }
 
         .modal-content {
@@ -135,9 +135,8 @@
             padding: 20px;
             border: 1px solid #888;
             width: 80%;
-            max-width: 500px; /* Ancho máximo del modal */
+            max-width: 500px;
             text-align: center;
-           margin-top: -20px;
         }
 
         .close {
@@ -154,7 +153,6 @@
             text-decoration: none;
             cursor: pointer;
         }
-
     </style>
 </head>
 <body>
@@ -218,7 +216,7 @@
 
             <label for="birthdate">Fecha de Nacimiento:</label>
             <input type="date" id="birthdate" name="birthdate" required>
-            <span class="error" id="dateError">Fecha inválida</span>
+            <span class="error" id="dateError">Debes tener al menos 18 años</span>
 
             <!-- Checkbox para aceptar términos y condiciones -->
             <label>
@@ -242,27 +240,7 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2>Términos y condiciones</h2>
-            <p>Responsable del Tratamiento de Datos Personales
-
-                "Nombre cmopleto", con domicilio en [dirección física o virtual], es el responsable del tratamiento de los datos personales que usted nos proporcione.
-                
-                Finalidades del Tratamiento de Datos
-                
-                Los datos personales recabados serán utilizados para las siguientes finalidades esenciales:
-                
-                Gestionar de manera eficiente las actividades realizadas, utilizando el feedback de manera anónima y escuchando sus sugerencias.
-                Brindar una experiencia personalizada y optimizada basada en sus preferencias.
-                Mantener un control adecuado de las personas y comunidades involucradas en nuestras actividades.
-                De manera adicional y con su consentimiento expreso, utilizaremos sus datos personales para:
-                Personalizar su experiencia de forma más directa y acorde a sus intereses.
-                Opciones para Oponerse al Tratamiento de Datos
-                 Si no desea que sus datos personales sean tratados para las finalidades adicionales, puede manifestar su negativa enviando un correo electrónico a "correo" o directamente desde la página web en el apartado de soporte.
-                Derechos de Acceso, Rectificación, Cancelación y Oposición (ARCO)
-                Usted tiene el derecho de acceder, rectificar, cancelar u oponerse al tratamiento de sus datos personales en cualquier momento. Para ejercer estos derechos, puede enviar una solicitud al correo electrónico antes mencionado o desde la plataforma en el apartado de soporte.
-                Protección de Datos
-                Implementamos medidas de seguridad adecuadas para proteger sus datos personales contra el acceso no autorizado, la divulgación o cualquier otro uso no permitido.
-                Modificaciones a los Términos y Condiciones
-                Nos reservamos el derecho de modificar estos términos y condiciones en cualquier momento. En caso de cambios, notificaremos a los usuarios a través de nuestra página web.]</p>
+            <p>Responsable del Tratamiento de Datos Personales...</p>
             <button id="confirmBtn">Confirmar</button>
         </div>
     </div>
@@ -274,120 +252,101 @@
             <label for="emailForgotPassword">Correo Electrónico:</label>
             <input type="email" id="emailForgotPassword" name="emailForgotPassword" required>
 
-            <button type="submit">Recuperar Contraseña</button>
+            <button type="submit">Enviar</button>
         </form>
         <div class="link">
-            <p><a href="#" onclick="showLogin()">Volver al Inicio de Sesión</a></p>
+            <p><a href="#" onclick="showLogin()">Inicia Sesión</a></p>
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
     <script>
-        // Función para hashear la contraseña antes de enviar el formulario
-        function hashPassword(passwordId) {
-            var password = document.getElementById(passwordId).value;
-            var hashedPassword = CryptoJS.SHA256(password).toString();
-            document.getElementById('hashedPassword').value = hashedPassword;
-            return true; // Continuar con el envío del formulario
-        }
-
-        // Alternar visibilidad de la contraseña
-        function togglePassword(passwordId) {
-            var passwordField = document.getElementById(passwordId);
-            var icon = document.getElementById('toggle' + passwordId.charAt(0).toUpperCase() + passwordId.slice(1) + 'Icon');
-
-            if (passwordField.type === "password") {
-                passwordField.type = "text";
-                icon.textContent = "🙈"; // Cambiar el icono
-            } else {
-                passwordField.type = "password";
-                icon.textContent = "👁️"; // Cambiar el icono
-            }
-        }
-
-        // Mostrar icono de contraseña solo si el campo no está vacío
-        function togglePasswordVisibility(passwordId) {
-            var passwordField = document.getElementById(passwordId);
-            var icon = document.getElementById('toggle' + passwordId.charAt(0).toUpperCase() + passwordId.slice(1) + 'Icon');
-            if (passwordField.value !== "") {
-                icon.style.display = "block"; // Mostrar el icono
-            } else {
-                icon.style.display = "none"; // Ocultar el icono
-            }
-        }
-
-        // Mostrar formulario de registro
+        // Mostrar y ocultar formularios
         function showRegister() {
             document.getElementById('loginForm').style.display = 'none';
             document.getElementById('registerForm').style.display = 'block';
             document.getElementById('forgotPasswordForm').style.display = 'none';
         }
 
-        // Mostrar formulario de inicio de sesión
         function showLogin() {
             document.getElementById('loginForm').style.display = 'block';
             document.getElementById('registerForm').style.display = 'none';
             document.getElementById('forgotPasswordForm').style.display = 'none';
         }
 
-        // Mostrar formulario de recuperar contraseña
         function showForgotPassword() {
             document.getElementById('loginForm').style.display = 'none';
             document.getElementById('registerForm').style.display = 'none';
             document.getElementById('forgotPasswordForm').style.display = 'block';
         }
 
-        // Validación del formulario de registro
+        // Validar contraseñas y fecha de nacimiento
         function validateForm() {
-            let password = document.getElementById('passwordRegister').value;
-            let confirmPassword = document.getElementById('confirmPassword').value;
-            let acceptTerms = document.getElementById('acceptTerms').checked;
-
+            const password = document.getElementById('passwordRegister').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const birthdate = document.getElementById('birthdate').value;
+            const passwordError = document.getElementById('passwordError');
+            const dateError = document.getElementById('dateError');
+            
+            // Validar coincidencia de contraseñas
             if (password !== confirmPassword) {
-                document.getElementById('passwordError').style.display = 'block';
+                passwordError.style.display = 'block';
                 return false;
             } else {
-                document.getElementById('passwordError').style.display = 'none';
+                passwordError.style.display = 'none';
             }
 
-            if (!acceptTerms) {
-                document.getElementById('termsError').style.display = 'block';
+            // Validar edad mínima (18 años)
+            const today = new Date();
+            const birthDate = new Date(birthdate);
+            const age = today.getFullYear() - birthDate.getFullYear();
+            const monthDifference = today.getMonth() - birthDate.getMonth();
+            const dayDifference = today.getDate() - birthDate.getDate();
+
+            if (age < 18 || (age === 18 && (monthDifference < 0 || (monthDifference === 0 && dayDifference < 0)))) {
+                dateError.style.display = 'block';
                 return false;
             } else {
-                document.getElementById('termsError').style.display = 'none';
+                dateError.style.display = 'none';
             }
 
-            hashPassword('passwordRegister'); // Hasheamos la contraseña
             return true;
         }
 
-        // Función para abrir y cerrar el modal
-        var modal = document.getElementById("myModal");
-        var btn = document.getElementById("openModalBtn");
-        var span = document.getElementsByClassName("close")[0];
-        var confirmBtn = document.getElementById("confirmBtn");
+        // Alternar visibilidad de la contraseña
+        function togglePasswordVisibility(passwordFieldId) {
+            const passwordField = document.getElementById(passwordFieldId);
+            const icon = document.querySelector(`#${passwordFieldId} + .toggle-password`);
+            icon.style.display = passwordField.value ? 'block' : 'none';
+        }
 
-        // Mostrar el modal cuando se hace clic en el enlace de términos y condiciones
-        btn.onclick = function() {
+        function togglePassword(passwordFieldId) {
+            const passwordField = document.getElementById(passwordFieldId);
+            passwordField.type = passwordField.type === 'password' ? 'text' : 'password';
+        }
+
+        // Mostrar el modal con los términos y condiciones
+        const modal = document.getElementById("myModal");
+        const openModalBtn = document.getElementById("openModalBtn");
+        const closeModalBtn = document.getElementsByClassName("close")[0];
+        const confirmBtn = document.getElementById("confirmBtn");
+
+        openModalBtn.onclick = function() {
             modal.style.display = "block";
         }
 
-        // Cerrar el modal
-        span.onclick = function() {
+        closeModalBtn.onclick = function() {
             modal.style.display = "none";
         }
 
-        // Cerrar el modal cuando el usuario haga clic fuera del mismo
+        confirmBtn.onclick = function() {
+            document.getElementById("acceptTerms").checked = true;
+            modal.style.display = "none";
+        }
+
         window.onclick = function(event) {
             if (event.target == modal) {
                 modal.style.display = "none";
             }
-        }
-
-        // Confirmar la aceptación de términos y condiciones
-        confirmBtn.onclick = function() {
-            modal.style.display = "none";
-            document.getElementById('acceptTerms').checked = true; // Marcar la casilla automáticamente
         }
     </script>
 </body>
